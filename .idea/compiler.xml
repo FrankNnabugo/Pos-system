@@ -7,20 +7,28 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Config-server" />
-        <module name="Gateway-service" />
-        <module name="Discovery-server" />
+        <module name="discovery-service" />
+        <module name="config-service" />
       </profile>
-      <profile name="Annotation profile for Catalog-service" enabled="true">
+      <profile name="Annotation profile for catalog-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
         <module name="Catalog-service" />
+        <module name="gateway-service" />
+        <module name="catalog-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Catalog-service" target="18" />
+      <module name="Config-server" target="18" />
+      <module name="Discovery-server" target="18" />
+      <module name="Gateway-service" target="18" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -28,6 +36,10 @@
       <module name="Config-server" options="-parameters" />
       <module name="Discovery-server" options="-parameters" />
       <module name="Gateway-service" options="-parameters" />
+      <module name="catalog-service" options="-parameters" />
+      <module name="config-service" options="-parameters" />
+      <module name="discovery-service" options="-parameters" />
+      <module name="gateway-service" options="-parameters" />
     </option>
   </component>
 </project>
