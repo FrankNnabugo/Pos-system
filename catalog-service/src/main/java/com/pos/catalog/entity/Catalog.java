@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,7 +31,12 @@ public class Catalog {
     @Column(nullable = false)
     private String description;
 
-    private List<String> imageUrls;
+    @Column(nullable = false)
+    private String category;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "catalog_picture_id")
+    private List<CatalogPicture> picture;
 
     @Column(precision = 19, scale = 2, nullable = false)
     private BigDecimal price;
@@ -40,18 +46,11 @@ public class Catalog {
     @Enumerated(EnumType.STRING)
     private Availability availability;
 
-    @Column(nullable = false)
-    private String quantity;
-
-    @OneToMany
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
-
     @CreationTimestamp
     @Column(nullable = false)
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
     @LastModifiedDate
-    private LocalDateTime updatedAt;
+    private Instant updatedAt;
 
 }
