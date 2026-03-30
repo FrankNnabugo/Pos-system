@@ -1,4 +1,4 @@
-package com.pos.gateway.circuitBreakerController;
+package com.pos.gateway.circuitBreaker;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
