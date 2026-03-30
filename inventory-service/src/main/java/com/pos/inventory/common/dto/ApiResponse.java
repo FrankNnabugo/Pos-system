@@ -1,4 +1,4 @@
-package com.pos.catalog.common.dto;
+package com.pos.inventory.common.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

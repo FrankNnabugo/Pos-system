@@ -4,14 +4,12 @@ import com.pos.catalog.common.enums.Availability;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.List;
 
-@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -50,7 +48,7 @@ public class Catalog {
     @Column(nullable = false)
     private Instant createdAt;
 
-    @LastModifiedDate
+    @UpdateTimestamp
     private Instant updatedAt;
 
 }
