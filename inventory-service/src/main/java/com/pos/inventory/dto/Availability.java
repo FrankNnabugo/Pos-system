@@ -1,4 +1,4 @@
-package com.pos.catalog.common.enums;
+package com.pos.inventory.dto;
 
 public enum Availability {
     OUT_OF_STOCK,

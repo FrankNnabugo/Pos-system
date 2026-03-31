@@ -1,9 +1,8 @@
-package com.pos.catalog.entity;
+package com.pos.inventory.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
@@ -12,22 +11,13 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "catalog_pictures")
-public class CatalogPicture {
-
+@Table(name = "processed_inventory_events")
+public class Idempotency {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-
-    @Column(name = "catalog_id")
-    private String catalogId;
-
-    private String imageUrls;
-
-    @CreationTimestamp
     @Column(nullable = false)
+    private String eventId;
+    @CreationTimestamp
     private Instant createdAt;
-
-    @UpdateTimestamp
-    private Instant updatedAt;
 }

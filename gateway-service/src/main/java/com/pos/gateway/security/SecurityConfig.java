@@ -28,12 +28,14 @@ public class SecurityConfig {
                                 "/api-docs",
                                 "/swagger",
                                 "/swagger-ui/**",
-                                "/v3/api-docs/**"
+                                "/v3/api-docs/**",
+                                "/api/v1/fallback/**"
                         )
                         .permitAll()
 
                         .pathMatchers("/api/v1/catalog/admin").hasRole("ADMIN")
                         .pathMatchers("/api/v1/catalog/user").hasRole("USER")
+                        .pathMatchers("/api/v1/inventory/user").hasRole("USER")
                         .anyExchange()
                         .authenticated())
                 .oauth2ResourceServer(jwt-> jwt.jwt(

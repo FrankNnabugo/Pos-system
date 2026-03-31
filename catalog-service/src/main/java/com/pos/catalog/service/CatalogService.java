@@ -4,10 +4,12 @@ import com.pos.catalog.common.dto.CreateCatalogRequest;
 import com.pos.catalog.common.dto.CreateCatalogResponse;
 import com.pos.catalog.common.exceptions.ResourceNotFoundException;
 import com.pos.catalog.entity.Catalog;
+import com.pos.catalog.event.CatalogPublisher;
 import com.pos.catalog.repository.CatalogRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +17,7 @@ public class CatalogService {
     private final CatalogRepository catalogRepository;
     private CatalogPictureService catalogPictureService;
     private final ModelMapper modelMapper;
+    private final CatalogPublisher catalogPublisher;
 
     private Catalog toCatalog(CreateCatalogRequest request) {
         Catalog catalog = new Catalog();
@@ -27,11 +30,13 @@ public class CatalogService {
         return catalog;
     }
 
+    @Transactional
     public CreateCatalogResponse createCatalog(CreateCatalogRequest request){
         Catalog savedCatalog = catalogRepository.save(toCatalog(request));
 
         if(request.getImageUrls() != null && !request.getImageUrls().isEmpty())
-          catalogPictureService.uploadCatalogPictures(savedCatalog.getId(), request.getImageUrls());
+            catalogPictureService.uploadCatalogPictures(savedCatalog.getId(), request.getImageUrls());
+        catalogPublisher.publishProductCreatedEvent(savedCatalog.getId(), request);
 
         return modelMapper.map(savedCatalog, CreateCatalogResponse.class);
 

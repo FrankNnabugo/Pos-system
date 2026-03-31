@@ -13,17 +13,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ValidationException.class)
-    public ResponseEntity<ApiError> handleValidationException(ValidationException e, HttpServletRequest request) {
-        ApiError error = new ApiError(
-                HttpStatus.BAD_REQUEST.value(),
-                "VALIDATION_ERROR",
-                e.getMessage(),
-                request.getServletPath()
-        );
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-    }
-
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiError> handleResourceNotFoundException(ResourceNotFoundException e, HttpServletRequest request) {
         ApiError error = new ApiError(
@@ -33,17 +22,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 request.getServletPath()
         );
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(NullParameterException.class)
-    public ResponseEntity<ApiError> handleNullParameterException(NullParameterException e, HttpServletRequest request){
-        ApiError error = new ApiError(
-                HttpStatus.BAD_REQUEST.value(),
-                e.getMessage(),
-                "NULL_PARAMETER",
-                request.getServletPath()
-        );
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)

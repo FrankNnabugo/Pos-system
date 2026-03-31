@@ -82,4 +82,5 @@ public class CatalogController {
         List<CatalogPictureResponse> responses = catalogPictureService.getCatalogPictures(catalogId);
         return new ApiResponse<>(HttpStatus.OK.value(),HttpStatus.OK.name(), responses);
     }
+
 }
