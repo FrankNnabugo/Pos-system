@@ -1,6 +1,6 @@
 package com.pos.inventory.entity;
 
-import com.pos.inventory.common.enums.LocationType;
+import com.pos.inventory.dto.LocationType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

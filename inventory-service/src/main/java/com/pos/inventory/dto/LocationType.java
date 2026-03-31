@@ -1,4 +1,4 @@
-package com.pos.inventory.common.enums;
+package com.pos.inventory.dto;
 
 public enum LocationType {
     WAREHOUSE,

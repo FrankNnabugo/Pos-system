@@ -1,4 +1,4 @@
-package com.pos.inventory.common.dto;
+package com.pos.inventory.dto;
 
 import com.pos.inventory.entity.Location;
 import lombok.AllArgsConstructor;

@@ -1,9 +1,9 @@
 package com.pos.inventory.service;
 
-import com.pos.inventory.common.dto.InventoryProductEvent;
+import com.pos.inventory.dto.InventoryProductEvent;
 import com.pos.inventory.entity.Inventory;
-import com.pos.inventory.entity.InventoryEvents;
-import com.pos.inventory.repository.EventRepository;
+import com.pos.inventory.entity.Idempotency;
+import com.pos.inventory.repository.IdempotencyRepository;
 import com.pos.inventory.repository.InventoryRepository;
 import com.pos.inventory.repository.LocationRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,15 +24,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class InventoryService {
     private final InventoryRepository inventoryRepository;
-    private final EventRepository eventRepository;
+    private final IdempotencyRepository idempotencyRepository;
     private final LocationRepository locationRepository;
 
     @KafkaHandler
     @Transactional
     public void createInventory(@Payload InventoryProductEvent event, String id, Acknowledgment ack){
-        if(eventRepository.existsByEventId(event.getEventId())) return;
+        if(idempotencyRepository.existsByEventId(event.getEventId())) return;
         inventoryRepository.save(toInventory(event, id));
-        eventRepository.save(toEvent(event.getEventId()));
+        idempotencyRepository.save(toEvent(event.getEventId()));
         ack.acknowledge();
     }
 
@@ -45,10 +45,10 @@ public class InventoryService {
         return inventory;
     }
 
-    private InventoryEvents toEvent(String eventId){
-        InventoryEvents inventoryEvents = new InventoryEvents();
-        inventoryEvents.setEventId(eventId);
-        return inventoryEvents;
+    private Idempotency toEvent(String eventId){
+        Idempotency idempotency = new Idempotency();
+        idempotency.setEventId(eventId);
+        return idempotency;
     }
 
 }

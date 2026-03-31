@@ -1,7 +1,7 @@
 package com.pos.inventory.service;
 
-import com.pos.inventory.common.dto.LocationRequest;
-import com.pos.inventory.common.dto.LocationResponse;
+import com.pos.inventory.dto.LocationRequest;
+import com.pos.inventory.dto.LocationResponse;
 import com.pos.inventory.entity.Location;
 import com.pos.inventory.repository.LocationRepository;
 import lombok.RequiredArgsConstructor;

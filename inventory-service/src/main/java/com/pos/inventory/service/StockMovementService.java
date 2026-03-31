@@ -1,7 +1,7 @@
 package com.pos.inventory.service;
 
-import com.pos.inventory.common.dto.StockRequest;
-import com.pos.inventory.common.dto.StockResponse;
+import com.pos.inventory.dto.StockRequest;
+import com.pos.inventory.dto.StockResponse;
 import com.pos.inventory.entity.StockMovement;
 import com.pos.inventory.repository.StockRepository;
 import lombok.RequiredArgsConstructor;

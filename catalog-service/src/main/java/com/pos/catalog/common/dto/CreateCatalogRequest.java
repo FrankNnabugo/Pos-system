@@ -1,6 +1,5 @@
 package com.pos.catalog.common.dto;
 
-import com.pos.catalog.common.enums.Availability;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

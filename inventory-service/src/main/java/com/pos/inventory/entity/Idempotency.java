@@ -12,7 +12,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @Entity
 @Table(name = "processed_inventory_events")
-public class InventoryEvents {
+public class Idempotency {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;

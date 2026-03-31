@@ -1,16 +1,16 @@
-package com.pos.inventory.common.dto;
+package com.pos.inventory.dto;
 
-import com.pos.inventory.common.enums.LocationType;
 import lombok.*;
-
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LocationRequest {
+public class LocationResponse {
+    private String id;
     private String name;
     private LocationType locationType;
     private String address;
     private String salesPerson;
+
 }

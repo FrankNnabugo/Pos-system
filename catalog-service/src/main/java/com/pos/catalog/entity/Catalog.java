@@ -1,6 +1,6 @@
 package com.pos.catalog.entity;
 
-import com.pos.catalog.common.enums.Availability;
+import com.pos.catalog.common.dto.Availability;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

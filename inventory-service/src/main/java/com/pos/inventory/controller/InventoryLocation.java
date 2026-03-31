@@ -1,8 +1,8 @@
 package com.pos.inventory.controller;
 
-import com.pos.inventory.common.dto.ApiResponse;
-import com.pos.inventory.common.dto.LocationRequest;
-import com.pos.inventory.common.dto.LocationResponse;
+import com.pos.inventory.dto.ApiResponse;
+import com.pos.inventory.dto.LocationRequest;
+import com.pos.inventory.dto.LocationResponse;
 import com.pos.inventory.service.LocationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

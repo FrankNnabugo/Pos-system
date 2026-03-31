@@ -1,6 +1,5 @@
-package com.pos.inventory.common.dto;
+package com.pos.inventory.dto;
 
-import com.pos.inventory.common.enums.Availability;
 import lombok.*;
 
 import java.math.BigDecimal;

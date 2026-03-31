@@ -1,8 +1,8 @@
 package com.pos.inventory.controller;
 
-import com.pos.inventory.common.dto.ApiResponse;
-import com.pos.inventory.common.dto.StockRequest;
-import com.pos.inventory.common.dto.StockResponse;
+import com.pos.inventory.dto.ApiResponse;
+import com.pos.inventory.dto.StockRequest;
+import com.pos.inventory.dto.StockResponse;
 import com.pos.inventory.service.StockMovementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
