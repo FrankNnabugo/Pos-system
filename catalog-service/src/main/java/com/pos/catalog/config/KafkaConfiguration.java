@@ -23,12 +23,12 @@ public class KafkaConfiguration {
     private String catalog;
 
     @Value("${spring.kafka.bootstrap-servers}")
-    private String bootstrapServer;
+    private String bootstrapServers;
 
     @Bean
     public ProducerFactory<String, Object> producerFactory() {
         Map<String, Object> props = new HashMap<>();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         props.put(ProducerConfig.ACKS_CONFIG, "all");
@@ -45,14 +45,14 @@ public class KafkaConfiguration {
 
     @Bean
     public KafkaAdmin kafkaAdmin() {
-        return new KafkaAdmin(Map.of(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer));
+        return new KafkaAdmin(Map.of(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers));
     }
 
     @Bean
     public NewTopic catalog() {
         return TopicBuilder.name(catalog)
                 .partitions(4)
-                .replicas(2)
+                .replicas(3)
                 .build();
     }
 

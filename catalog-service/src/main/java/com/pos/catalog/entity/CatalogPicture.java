@@ -12,15 +12,15 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "catalog_pictures")
+@Table(name = "product_pictures")
 public class CatalogPicture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column(name = "catalog_id")
-    private String catalogId;
+    @Column(name = "product_id")
+    private String productId;
 
     private String imageUrls;
 

@@ -33,7 +33,7 @@ spring:
 
 
   kafka:
-    bootstrap-servers: localhost:29092
+    bootstrap-servers: localhost:29092, localhost:29093, localhost:29094
     topics:
       catalog: catalog
 
