@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "catalog")
+@Table(name = "product")
 public class Catalog {
 
     @Id
@@ -33,7 +33,7 @@ public class Catalog {
     private String category;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "catalog_picture_id")
+    @JoinColumn(name = "picture_id")
     private List<CatalogPicture> picture;
 
     @Column(precision = 19, scale = 2, nullable = false)
